@@ -1,0 +1,11 @@
+<nav class="primary-nav">
+  <ul class="cluster step--1 fw500 lh--3" role="list">
+    {% for item in primaryNav %}
+    <li>
+      <a href="{{ item.href }}">
+        {{ item.label }}
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</nav>

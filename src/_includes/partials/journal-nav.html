@@ -1,0 +1,14 @@
+<nav class="journal-nav">
+  <div class="cluster wrapper">
+    <a class="step--1 uppercase fw700 letter-spacing-3 lh--3" href="#">Journal</a>
+    <ul class="cluster step--1" role="list">
+      {% for item in journalNav %}
+        <li>
+          <a href="{{ item.href }}">
+            {{ item.label }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</nav>

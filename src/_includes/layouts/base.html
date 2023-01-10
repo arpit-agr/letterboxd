@@ -14,14 +14,21 @@
   {%- include "partials/meta.html" -%}
 </head>
 <body>
-  <a href="#main" class="skip-to-main">Skip to content</a>
-  <header class="site-head"></header>
+  <a
+    href="#main"
+    class="skip-to-main step--1 fw500 lh--3">
+    Skip to content
+  </a>
+  <header class="site-head">
+    {%- include "partials/header.html" -%}
+  </header>
+  {%- block preContent -%}{%- endblock -%}
   <main id="main" tabindex="-1">
     {%- block content -%}
       This page is under maintenance.
     {%- endblock -%}
   </main>
-  <footer role="contentinfo"></footer>
+  <!-- <footer role="contentinfo"></footer> -->
   {%- block bodyScripts -%}{%- endblock -%}
 </body>
 </html>
