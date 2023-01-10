@@ -3,6 +3,10 @@ const htmlmin = require("html-minifier");
 const CleanCSS = require("clean-css");
 
 module.exports = function(eleventyConfig) {
+  eleventyConfig.setServerOptions({
+    showAllHosts: true,
+  });
+
   eleventyConfig.setQuietMode(true);
   eleventyConfig.addPlugin(directoryOutputPlugin);
 
