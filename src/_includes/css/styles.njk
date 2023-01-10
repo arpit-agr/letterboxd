@@ -2,7 +2,13 @@
 {% set css %}
   {% include "./reset.css" %}
   {% include "./a11y.css" %}
+  {% include "./fluid-type.css" %}
+  {% include "./fluid-space.css" %}
   {% include "./global.css" %}
+  {% include "./primary-nav.css" %}
+  {% include "./journal-nav.css" %}
+  {% include "./post.css" %}
+  {% include "./utilities.css" %}
 {% endset %}
 
 <style>{{ css | cssmin | safe }}</style>

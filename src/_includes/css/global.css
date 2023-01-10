@@ -1,0 +1,133 @@
+:root {
+	--content-width: 60rem;
+	--journal-content-width: 40rem;
+	--max-inline-size: min(var(--content-width), 100vw - (2 * var(--gutter)));
+	--gutter: var(--space-s-m);
+
+	--font-plain: system-ui;
+	--font-special: Iowan Old Style, Apple Garamond, Baskerville, Times New Roman,
+		Droid Serif, Times, Source Serif Pro, serif, Apple Color Emoji,
+		Segoe UI Emoji, Segoe UI Symbol;
+	--line-height: 1.6;
+	--line-height--1: 1.4;
+	--line-height--2: 1.2;
+	--line-height--3: 1;
+	--letter-spacing--1: -0.015em;
+	--letter-spacing-1: 0.015em;
+	--letter-spacing-2: 0.03em;
+	--letter-spacing-3: 0.24em;
+
+	--text: hsl(210 17% 40%);
+	--secondary-text: hsl(210 14% 30%);
+	--inverted-text: hsl(210 100% 96%);
+	--light-bg: white;
+	--dark-bg: hsl(210 17% 9%);
+	--gray-bg: hsl(210 20% 33%);
+	--dark-gray-bg: hsl(216 19% 21%);
+	--separator-color: hsl(210 33% 80% / 50%);
+
+	--primary-nav-height: 8rem;
+}
+
+body {
+	font-family: var(--font-plain);
+	font-size: var(--step-0);
+	line-height: var(--line-height);
+	/* hyphens: auto; */
+
+	color: var(--text);
+	background-repeat: repeat no-repeat;
+	background-color: var(--light-bg);
+	background-image: linear-gradient(
+		180deg,
+		var(--dark-bg) 0,
+		var(--dark-bg) var(--primary-nav-height),
+		var(--light-bg) calc(var(--primary-nav-height) + 1px)
+	);
+	background-position: 0 0;
+}
+
+header,
+nav {
+	color: var(--inverted-text);
+}
+
+main {
+	background-color: var(--light-bg);
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: var(--letter-spacing--1);
+}
+
+h1,
+h2 {
+	line-height: var(--line-height--2);
+}
+
+h1 {
+	font-size: var(--step-5);
+	/* font-weight: 900; */
+}
+
+h2 {
+	font-size: var(--step-2);
+}
+
+h3 {
+	font-size: var(--step-1);
+	line-height: var(--line-height--1);
+}
+
+a {
+	color: inherit;
+	text-decoration-line: none;
+	text-underline-offset: 2px;
+}
+
+a:hover,
+a:focus {
+	text-decoration-line: underline;
+}
+
+blockquote {
+	position: relative;
+	padding-block: 1em;
+	border-block: 1px solid var(--separator-color);
+
+	font-family: var(--font-special);
+	font-size: var(--step-1);
+	letter-spacing: var(--letter-spacing--1);
+	line-height: var(--line-height--1);
+}
+
+blockquote > * {
+	--flow-space: 0.5em;
+}
+
+blockquote > * + * {
+	margin-block-start: var(--flow-space, 0.5em);
+}
+
+blockquote p:first-child:before {
+	content: open-quote;
+	margin-right: 0.05em;
+	position: absolute;
+	inset-inline-end: 100%;
+	text-align: end;
+}
+
+blockquote p:first-child:after {
+	content: close-quote;
+}
+
+figcaption {
+	--flow-space: 0.5em;
+	/* color: var(--secondary-text); */
+}
+
+.site-head {
+	--cluster-horizontal-alignment: space-between;
+}
