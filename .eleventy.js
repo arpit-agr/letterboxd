@@ -1,6 +1,8 @@
 const directoryOutputPlugin = require("@11ty/eleventy-plugin-directory-output");
 const htmlmin = require("html-minifier");
 const CleanCSS = require("clean-css");
+const { DateTime } = require("luxon");
+const imageShortcode = require("./src/_11ty/shortcodes/image");
 
 module.exports = function(eleventyConfig) {
   eleventyConfig.setServerOptions({
@@ -12,7 +14,7 @@ module.exports = function(eleventyConfig) {
 
   //Passthrough copy
   // eleventyConfig.addPassthroughCopy("./src/fonts");
-	// eleventyConfig.addPassthroughCopy("./src/images");
+	eleventyConfig.addPassthroughCopy("./src/images");
 	// eleventyConfig.addPassthroughCopy("./src/scripts");
   // eleventyConfig.addPassthroughCopy({"./src/favicons": "/"});
 	// eleventyConfig.addPassthroughCopy("./src/manifest.webmanifest");
@@ -30,6 +32,13 @@ module.exports = function(eleventyConfig) {
       return code
     }
   });
+  eleventyConfig.addFilter("postDate", (dateObj) => {
+    return DateTime.fromJSDate(dateObj).toLocaleString(DateTime.DATE_MED);
+  });
+
+  //Shortcodes
+  eleventyConfig.addNunjucksAsyncShortcode("image", imageShortcode);
+  eleventyConfig.addJavaScriptFunction("image", imageShortcode);
 
   //Transforms
   eleventyConfig.addTransform("htmlmin", function(content, outputPath) {
