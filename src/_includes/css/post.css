@@ -1,7 +1,6 @@
 .journal-article {
 	--compare-vw: calc(var(--content-width) - var(--journal-content-width));
 	--aside-width: var(--space-3xl);
-	background: var(--headline);
 	padding-block-end: 1em;
 }
 
