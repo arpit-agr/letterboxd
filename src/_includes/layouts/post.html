@@ -11,22 +11,18 @@
         <h1>{{ title }}</h1>
         <a
           href="#"
-          class="article-category font-special step--1 fw700"
+          class="article-category font-special fw700"
         >
           {{ category | title }}
         </a>
         <div class="article-meta cluster">
-          <div class="author-container cluster">
-            <div class="avatar">
-              <img src="{{ author.img }}" alt="{{ author.alt }}" width="24" height="24">
-            </div>
-            <a
-              href="#"
-              class="author-name step--2 uppercase fw700"
-            >
-              {{ author.name }}
-            </a>
-          </div>
+          <a
+            href="#"
+            class="cluster author step--2 uppercase fw700"
+            data-initials="{{ author | first }}"
+          >
+            {{ author }}
+          </a>
           <span>•</span>
           <time
             class="publish-date step--2 uppercase"
@@ -39,18 +35,30 @@
     </header>
     <div class="article-hero">
       <div class="wrapper">
-        {% figure hero.img, hero.alt, "(min-width: 63.3125rem) 960px, 95vw", "eager", "article-hero-img", "high", hero.caption %}
+        {% still hero.img, hero.alt, "(min-width: 63.3125rem) 960px, 95vw", "eager", "article-hero-img", "high", hero.caption %}
       </div>
     </div>
     <div class="article-body flow wrapper" data-variant="narrow">
+      {% if subhead.content %}
       <div class="subhead flow">
         <p class="step-1 fw700">{{ subhead.content }}</p>
         <p class="footer step--2 uppercase fw700">
           {{ subhead.footer | safe }}
         </p>
       </div>
+      {% endif %}
       {{ content | safe }}
-      </div>
+      <hr>
+      {% if dialogue %}
+        <div class="dialogue flow">
+          <h2>Dialogue of the Day</h2>
+          <p>
+            <q>{{ dialogue.line }}</q>
+            <span>-</span>
+            <cite>{{ dialogue.character }}</cite>
+          </p>
+        </div>
+      {% endif %}
     </div>
     <div 
       class="article-tags wrapper cluster uppercase step--1 fw500" 
@@ -58,8 +66,11 @@
     >
       <h2 class="step--1">Tags</h2>
       <ul class="cluster" role="list">
-        <li><a href="#">2022</a></li>        
-        <li><a href="#">Year in review</a></li>
+        {% for item in tag %}
+          <li>
+            {{ item }}
+          </li>
+        {% endfor %}
       </ul>
     </div>
   </article>

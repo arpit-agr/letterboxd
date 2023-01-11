@@ -7,6 +7,13 @@
   <script>document.documentElement.classList.add('has-js');</script>
   <!-- css -->
   {%- include "css/styles.njk" -%}
+  {%- if hue -%}
+    <style>
+      :root {
+        --hue: {{ hue }};
+      }
+    </style>
+  {%- endif -%}
   <!-- preload scripts and fonts -->
   <!-- named block to inject elements from layout files -->
   {%- block injectHead -%}{%- endblock -%}
