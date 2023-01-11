@@ -40,22 +40,35 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addNunjucksAsyncShortcode("image", imageShortcode);
   eleventyConfig.addJavaScriptFunction("image", imageShortcode);
 
-  eleventyConfig.addNunjucksAsyncShortcode("figure", async function (image, alt, sizes, loading, className, fetchpriority, caption) {
+  eleventyConfig.addNunjucksAsyncShortcode("still", async function (image, alt, sizes, loading, className, fetchpriority, caption) {
     const img = eleventyConfig.javascriptFunctions.image;
+    const figCaption = (function (caption) {
+      let result;
+      if (caption != "") {
+        result = `
+          <figcaption class="font-special step--1">${caption}</figcaption>
+        `.trim();
+      } else {
+        return `<!-- no caption -->`;
+      }
+      return result;
+    })(caption);
     return `
     <figure class="flow">
-      ${ await img("./src/images/" + image, alt, sizes, loading, className, fetchpriority) }
-      <figcaption class="font-special step--1">${caption}</figcaption>
+      ${ await img(image, alt, sizes, loading, className, fetchpriority) }
+      ${figCaption}
     </figure>
     `.trim();
   });
-  eleventyConfig.addNunjucksAsyncShortcode("aside", async function (poster, alt, sizes, loading, className="", fetchpriority="", title, year, director) {
+  eleventyConfig.addNunjucksAsyncShortcode("poster", async function (poster, alt, sizes, loading, className="", fetchpriority="", title, year, director) {
     const img = eleventyConfig.javascriptFunctions.image;
     return `
     <div class="aside flow">
-      ${ await img("./src/images/" + poster, alt, sizes, loading, className, fetchpriority) }
-      <p class="title font-special fw700 lh--2">${title}</p>
-      <p class="year step--2">${year}</p>
+      ${ await img(poster, alt, sizes, loading, className, fetchpriority) }
+      <p class="lh--2">
+        <span class="title font-special fw700">${title}</span>
+        <span class="year step--2">${year}</span>
+      </p>
       <p class="director step--2">Directed by <br>${director}</p>
     </div>
     `.trim();
