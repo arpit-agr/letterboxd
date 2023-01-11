@@ -35,6 +35,14 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter("postDate", (dateObj) => {
     return DateTime.fromJSDate(dateObj).toLocaleString(DateTime.DATE_MED);
   });
+  eleventyConfig.addFilter("addNbsp", (str) => {
+    if (!str) {
+      return;
+    }
+    let title = str.replace(/((.*)\s(.*))$/g, "$2&nbsp;$3");
+    title = title.replace(/"(.*)"/g, '\\"$1\\"');
+    return title;
+  });
 
   //Shortcodes
   eleventyConfig.addNunjucksAsyncShortcode("image", imageShortcode);

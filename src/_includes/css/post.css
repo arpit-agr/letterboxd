@@ -111,7 +111,7 @@
 
 .article-body a {
 	text-decoration-line: underline;
-	text-decoration-color: hsl(202deg 78% 51% / 33%);
+	text-decoration-color: var(--link-underline);
 }
 
 :where(.article-body) :where(ul, ol) {
@@ -125,10 +125,10 @@
 
 :where(.article-body) a[href]:focus,
 :where(.article-body) a[href]:hover {
-	color: hsl(202 78% 51%);
+	background-color: var(--link-bg);
 	text-decoration-color: currentColor;
 	text-decoration-thickness: 1px;
-	transition: color 0.33333333s cubic-bezier(0.19, 1, 0.22, 1);
+	transition: background-color 0.33333333s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 :where(.article-body) .aside {

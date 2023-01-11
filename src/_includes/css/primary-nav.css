@@ -11,7 +11,6 @@
 .primary-nav ul {
 	--cluster-gap: 1em;
 	flex-wrap: nowrap;
-	max-inline-size: calc(100vw - var(--gutter));
 	overflow: auto hidden;
 }
 
@@ -92,9 +91,15 @@
 	padding-block: var(--gutter);
 }
 
+/* 44.125rem - the view port width at which the header wraps  */
 @media (max-width: 44.125rem) {
 	.logo {
 		padding-block-start: var(--gutter);
+	}
+
+	/* do not use min-inline-size because that will create an overflow issue */
+	.primary-nav ul {
+		inline-size: calc(100vw - var(--gutter));
 	}
 
 	.primary-nav ul::after {

@@ -23,7 +23,7 @@ date: 2022-10-30
 layout: "layouts/post.html"
 ---
 
-Arundhati Roy opens her book [_The Ministry of Utmost Happiness_](https://www.goodreads.com/book/show/32388712-the-ministry-of-utmost-happiness) with the lines:
+Arundhati Roy opens her book [The Ministry of Utmost Happiness](https://www.goodreads.com/book/show/32388712-the-ministry-of-utmost-happiness) with the lines:
 
 > How to tell a shattered story?
 >

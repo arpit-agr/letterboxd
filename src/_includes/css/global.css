@@ -25,6 +25,8 @@
 	--dark-bg: hsl(var(--hue) 17% 9%);
 	--gray-bg: hsl(var(--hue) 20% 33%);
 	--dark-gray-bg: hsl(var(--hue) 19% 21%);
+	--link-underline: hsl(var(--hue) 50% 50%);
+	--link-bg: hsl(var(--hue) 33% 80% / 33%);
 	--separator-color: hsl(var(--hue) 33% 80% / 50%);
 
 	--primary-nav-height: 8rem;
@@ -73,7 +75,7 @@ h3 {
 a {
 	color: inherit;
 	text-decoration-line: none;
-	text-underline-offset: 2px;
+	text-underline-offset: 3px;
 }
 
 a:hover,
