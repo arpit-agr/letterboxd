@@ -8,6 +8,8 @@
   <!-- css -->
   {%- include "css/styles.njk" -%}
   {%- if hue -%}
+    <!-- saturtion and lightness from dark-bg -->
+    {%- set themeColor = "hsl(" + hue + " 17% 9%)" -%}
     <style>
       :root {
         --hue: {{ hue }};
