@@ -15,7 +15,7 @@ module.exports = function(eleventyConfig) {
   //Passthrough copy
   // eleventyConfig.addPassthroughCopy("./src/fonts");
 	eleventyConfig.addPassthroughCopy("./src/images");
-	// eleventyConfig.addPassthroughCopy("./src/scripts");
+	eleventyConfig.addPassthroughCopy("./src/scripts");
   // eleventyConfig.addPassthroughCopy({"./src/favicons": "/"});
 	// eleventyConfig.addPassthroughCopy("./src/manifest.webmanifest");
 
@@ -48,7 +48,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addNunjucksAsyncShortcode("image", imageShortcode);
   eleventyConfig.addJavaScriptFunction("image", imageShortcode);
 
-  eleventyConfig.addNunjucksAsyncShortcode("still", async function (image, alt, sizes, loading, className, fetchpriority, caption) {
+  eleventyConfig.addNunjucksAsyncShortcode("still", async function (image, alt, sizes, loading, className, fetchpriority, dataAction, caption) {
     const img = eleventyConfig.javascriptFunctions.image;
     const figCaption = (function (caption) {
       let result;
@@ -63,16 +63,16 @@ module.exports = function(eleventyConfig) {
     })(caption);
     return `
     <figure class="flow">
-      ${ await img(image, alt, sizes, loading, className, fetchpriority) }
+      ${ await img(image, alt, sizes, loading, className, fetchpriority, dataAction) }
       ${figCaption}
     </figure>
     `.trim();
   });
-  eleventyConfig.addNunjucksAsyncShortcode("poster", async function (poster, alt, sizes, loading, className="", fetchpriority="", title, year, director) {
+  eleventyConfig.addNunjucksAsyncShortcode("poster", async function (poster, alt, sizes, loading, className, fetchpriority, dataAction, title, year, director) {
     const img = eleventyConfig.javascriptFunctions.image;
     return `
     <div class="aside flow">
-      ${ await img(poster, alt, sizes, loading, className, fetchpriority) }
+      ${ await img(poster, alt, sizes, loading, className, fetchpriority, dataAction) }
       <p class="lh--2">
         <span class="title font-special fw700">${title}</span>
         <span class="year step--2">${year}</span>

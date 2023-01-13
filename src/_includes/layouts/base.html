@@ -17,6 +17,7 @@
     </style>
   {%- endif -%}
   <!-- preload scripts and fonts -->
+  {%- block preload -%}{%- endblock -%}
   <!-- named block to inject elements from layout files -->
   {%- block injectHead -%}{%- endblock -%}
   <!-- meta information -->
@@ -37,6 +38,7 @@
       This page is under maintenance.
     {%- endblock -%}
   </main>
+  {%- block postContent -%}{%- endblock -%}
   <!-- <footer role="contentinfo"></footer> -->
   {%- block bodyScripts -%}{%- endblock -%}
 </body>

@@ -1,11 +1,10 @@
 .site-head__inner {
-	/* --cluster-gap: 0 1em; */
 	--cluster-gap: calc(var(--gutter) / 2) 1em;
 }
 
 .logo {
 	inline-size: var(--space-5xl);
-	max-inline-size: var(--space-5xl);
+	padding-block-start: var(--logo-padding);
 }
 
 .primary-nav ul {
@@ -43,12 +42,7 @@
 .primary-nav ul::after,
 .primary-nav ul::before {
 	--n-space-l: 24px;
-	/* --n-space-m: 16px; */
 	--n-space-s: 8px;
-	/* --n-space-xs: 4px; */
-	/* --n-space-2xs: 2px; */
-	/* --_n-tab-group-padding: var(--n-tab-group-padding, var(--n-space-m)); */
-	/* --_n-tab-group-padding: var(--gutter); */
 	content: "";
 	box-sizing: content-box;
 	align-self: stretch;
@@ -57,9 +51,6 @@
 }
 
 .primary-nav ul::before {
-	/* margin-inline-end: calc(-1 * (var(--n-space-l) + var(--n-space-s)));
-	padding-inline-start: var(--_n-tab-group-padding); */
-
 	padding-inline-start: 0;
 	margin-inline-end: calc(-1 * var(--n-space-l) - 1em);
 	rotate: 180deg;
@@ -67,8 +58,6 @@
 }
 
 .primary-nav ul::after {
-	/* margin-inline-start: calc(-1 * (var(--n-space-l) + var(--n-space-s)));
-	padding-inline-end: var(--_n-tab-group-padding); */
 	flex: 1 1 0%;
 
 	margin-inline-start: calc(-1 * (var(--n-space-l) + 1em + var(--gutter)));
@@ -93,10 +82,6 @@
 
 /* 44.125rem - the view port width at which the header wraps  */
 @media (max-width: 44.125rem) {
-	.logo {
-		padding-block-start: var(--gutter);
-	}
-
 	/* do not use min-inline-size because that will create an overflow issue */
 	.primary-nav ul {
 		inline-size: calc(100vw - var(--gutter));

@@ -1,5 +1,10 @@
 {%- extends "layouts/base.html" -%}
 
+{%- block preload -%}
+  <link rel="preload" as="image" href="/images/noise.png">
+  <link rel="preload" as="script" href="/scripts/zoom.js">
+{%- endblock -%}
+
 {%- block preContent -%}
   {%- include "partials/journal-nav.html" -%}
 {%- endblock -%}
@@ -35,7 +40,7 @@
     </header>
     <div class="article-hero">
       <div class="wrapper">
-        {% still hero.img, hero.alt, "(min-width: 63.3125rem) 960px, 95vw", "eager", "article-hero-img", "high", hero.caption %}
+        {% still hero.img, hero.alt, "(min-width: 51.75rem) calc(100vw - 187px), 95vw", "eager", "article-hero-img", "high", "zoom", hero.caption %}
       </div>
     </div>
     <div class="article-body flow wrapper" data-variant="narrow">
@@ -74,4 +79,12 @@
       </ul>
     </div>
   </article>
+{%- endblock -%}
+
+{%- block postContent -%}
+  <div class="noise"></div>
+{%- endblock -%}
+
+{%- block bodyScripts -%}
+  <script src="/scripts/zoom.js"></script>
 {%- endblock -%}

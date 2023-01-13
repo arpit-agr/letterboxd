@@ -1,8 +1,8 @@
 const Image = require("@11ty/eleventy-img");
 
-async function imageShortcode(src, alt, sizes, loading, className = '', fetchpriority) {
+async function imageShortcode(src, alt, sizes, loading, className = '', fetchpriority, dataAction) {
   let metadata = await Image("./src/images/" + src, {
-    widths: [320, 640, 960, null],
+    widths: [400, 800, 1200, 1600, null],
     formats: ["avif", "webp", "jpeg"],
     outputDir: "./public/img/"
   });
@@ -14,6 +14,7 @@ async function imageShortcode(src, alt, sizes, loading, className = '', fetchpri
     loading,
     fetchpriority,
     decoding: "async",
+    "data-action": dataAction
   };
 
   // You bet we throw an error on missing alt in `imageAttributes` (alt="" works okay)

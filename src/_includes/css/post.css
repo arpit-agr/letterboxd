@@ -10,11 +10,6 @@
 	background-color: var(--gray-bg);
 }
 
-.journal-article header h1 {
-	--special-text: white;
-	color: var(--special-text);
-}
-
 .article-meta {
 	--cluster-gap: 0.5em;
 	margin-block-start: 0.5em;
@@ -172,6 +167,41 @@
 
 .article-tags {
 	--flow-space: var(--space-xl);
+}
+
+.noise {
+	position: absolute;
+	inset: var(--site-header-height) 0 0;
+	background-image: url("/images/noise.png");
+	background-repeat: repeat;
+	opacity: 0.025;
+	pointer-events: none;
+	z-index: 3;
+	/* animation: grain 6s steps(10) infinite; */
+}
+
+.zoom-overlay:before,
+.zoom-overlay:after {
+	content: "";
+	--tape-width: var(--step-4);
+	position: absolute;
+	/* inset-block-start: 0; */
+	inset-block-start: var(--gutter);
+	inline-size: var(--tape-width);
+	/* block-size: 100%; */
+	block-size: calc(100% - var(--gutter) - var(--gutter));
+	background-image: url("/images/tape.png");
+	background-repeat: repeat-y;
+	background-size: contain;
+	background-position: top center;
+}
+
+.zoom-overlay:before {
+	inset-inline-start: var(--gutter);
+}
+
+.zoom-overlay:after {
+	inset-inline-end: var(--gutter);
 }
 
 @media (min-width: 63.25rem) {
